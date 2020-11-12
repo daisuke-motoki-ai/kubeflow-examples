@@ -23,7 +23,6 @@ _REPO_URL='https://github.com/daisuke-motoki-ai/kubeflow-examples.git',\
 _PROJECT_ID=${_PROJECT_ID},\
 _COMPUTE_ZONE='asia-east1-a',\
 _CLUSTER_NAME='cluster-1',\
-_GCS_LOCATION='artifacts.kubeflow-294616.appspot.com',\
 _EXPERIMENT_NAME='helloworld-dev',\
 _TAG='latest'
 
