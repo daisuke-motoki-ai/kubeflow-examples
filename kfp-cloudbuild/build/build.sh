@@ -20,6 +20,7 @@ docker push gcr.io/${_PROJECT_ID}/kfp-util:latest
 # Set substitutions
 SUBSTITUTIONS=\
 _REPO_URL='https://github.com/daisuke-motoki-ai/kubeflow-examples.git',\
+_BRANCH='for_jbc_ai'
 _PROJECT_ID=${_PROJECT_ID},\
 _COMPUTE_ZONE='asia-east1-a',\
 _CLUSTER_NAME='cluster-1',\
