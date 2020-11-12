@@ -19,8 +19,8 @@ docker push gcr.io/kubeflow-294616/kfp-util:latest
 
 # Set substitutions
 SUBSTITUTIONS=\
-_REPO_URL='https://github.com/dai-motoki/kubeflow-examples.git',\
-_PROJECT_ID='kubeflow-294616',\
+_REPO_URL='https://github.com/daisuke-motoki-ai/kubeflow-examples.git',\
+_PROJECT_ID='devel-jbc-ai',\
 _COMPUTE_ZONE='asia-east1-a',\
 _CLUSTER_NAME='cluster-1',\
 _GCS_LOCATION='artifacts.kubeflow-294616.appspot.com',\
