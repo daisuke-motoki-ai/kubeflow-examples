@@ -23,7 +23,9 @@ from datetime import datetime
 SETTINGS_FILENAME = 'settings.yaml'
 HOST_URL = 'https://{}.endpoints.{}.cloud.goog/pipeline'
 OUTPUT_PACKAGE_PATH = 'pipeline.tar.gz'
-NAMESPACE = 'kubeflow'
+# NAMESPACE = 'kubeflow'
+NAMESPACE = 'default'
+HOST = 'ab9a3cc870150a0-dot-asia-east1.pipelines.googleusercontent.com'
 EXPERIMENT_NAME = 'default-experiment'
 PIPELINE_NAME = 'helloworld-pipeline'
 
@@ -51,12 +53,12 @@ def read_settings():
 
 
 def deploy_pipeline(
-  kfp_package_path, version, experiment_name, namespace, run):
+  kfp_package_path, version, experiment_name, namespace, host, run):
  """Deploy and run the givne kfp_package_path."""
 
  pipeline_name = PIPELINE_NAME+"-"+version
 
- client = kfp.Client(namespace=namespace)
+ client = kfp.Client(namespace=namespace, host=host)
 
  pipeline = client.upload_pipeline(
    pipeline_package_path=kfp_package_path,
@@ -108,7 +110,7 @@ def main(operation, **args):
 
     run = 'run' in args
 
-    deploy_pipeline(package_path, version, experiment_name, namespace, run)
+    deploy_pipeline(package_path, version, experiment_name, namespace, HOST, run)
 
   else:
     raise ValueError(
