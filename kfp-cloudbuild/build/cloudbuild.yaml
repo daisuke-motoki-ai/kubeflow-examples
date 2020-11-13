@@ -1,5 +1,6 @@
 steps:
 
+# 手動ビルドをする際は以下リポジトリクローンを消してください。
 # Clone repo to Cloud Build environment
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone',
