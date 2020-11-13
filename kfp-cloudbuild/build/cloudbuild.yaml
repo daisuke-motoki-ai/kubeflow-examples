@@ -14,10 +14,10 @@ steps:
   id: Build & Push GCR
   args:
   - --destination=gcr.io/${_PROJECT_ID}/kfp-util:latest
-  - --dockerfile=./kfp-cloudbuild/build/Dockerfile
   - --cache=true
   - --cache-ttl=6h
 
+  # - --dockerfile=./kfp-cloudbuild/build/Dockerfile
 # Run unit tests
 - name: 'python:3.6-slim-jessie'
   entrypoint: 'bash'
