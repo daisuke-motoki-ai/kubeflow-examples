@@ -13,6 +13,7 @@
 # limitations under the License.
 """Helper module to deploy and run pipelines."""
 
+import datetime
 import yaml
 import os
 import pathlib
@@ -57,7 +58,8 @@ def deploy_pipeline(
  """Deploy and run the givne kfp_package_path."""
 
 #  pipeline_name = PIPELINE_NAME+"-"+version
- pipeline_name = PIPELINE_NAME+"_version_at_"+version
+ dt_now = datetime.datetime.now()
+ pipeline_name = PIPELINE_NAME+"_version_at_"+version+dt_now.strftime("%Y%m%d%H%M")
 
  client = kfp.Client(namespace=namespace, host=host)
 #  pipeline_file = os.path.join(pipeline_file_path)
