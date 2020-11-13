@@ -23,7 +23,6 @@ from datetime import datetime
 SETTINGS_FILENAME = "settings.yaml"
 HOST_URL = "https://{}.endpoints.{}.cloud.goog/pipeline"
 OUTPUT_PACKAGE_PATH = "pipeline.tar.gz"
-# NAMESPACE = 'kubeflow'
 NAMESPACE = "default"
 HOST = "6b415e369a40e0ab-dot-asia-east1.pipelines.googleusercontent.com"
 EXPERIMENT_NAME = "default-experiment"
