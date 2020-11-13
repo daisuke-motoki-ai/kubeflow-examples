@@ -5,6 +5,7 @@ steps:
   args: [
       'builds', 
       'submit',
+      '--config=kfp-cloudbuild/build/cloudbuild.yaml',
       '--substitutions= 
         _PROJECT_ID=devel-jbc-ai,
         _COMPUTE_ZONE=asia-east1-a,
