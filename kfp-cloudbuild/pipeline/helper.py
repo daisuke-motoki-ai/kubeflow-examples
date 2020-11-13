@@ -60,7 +60,7 @@ def deploy_pipeline(
  pipeline_name = PIPELINE_NAME+"_version_at_"+version
 
  client = kfp.Client(namespace=namespace, host=host)
- pipeline_file = os.path.join(pipeline_file_path)
+#  pipeline_file = os.path.join(pipeline_file_path)
 
 
  pipeline = client.upload_pipeline(
