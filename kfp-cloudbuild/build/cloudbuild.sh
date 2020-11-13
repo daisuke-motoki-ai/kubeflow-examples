@@ -24,6 +24,6 @@ _CLUSTER_NAME='cluster-1',\
 _EXPERIMENT_NAME='calqubo_mock',\
 _TAG='1.0.0'
 
-# Submit the build job
-gcloud builds submit --no-source --config build/cloudbuild.yaml \
---substitutions $SUBSTITUTIONS
+# # Submit the build job
+# gcloud builds submit --no-source --config build/cloudbuild.yaml \
+# --substitutions $SUBSTITUTIONS
