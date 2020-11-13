@@ -2,10 +2,10 @@
 
 FROM gcr.io/cloud-builders/kubectl
 
-#RUN apt update && \
-#    apt-get install -y python3 python-dev python3-dev build-essential \
-#    libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip && \
-#    apt install -y python3-pip
+RUN apt update && \
+   apt-get install -y python3 python-dev python3-dev build-essential \
+   libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev python-pip && \
+   apt install -y python3-pip
 
 ### Install Python 3.6 #######################################################
 # Taken from python:3.6-slim-jessie
