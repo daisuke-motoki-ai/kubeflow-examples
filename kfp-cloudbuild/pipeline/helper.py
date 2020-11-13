@@ -60,7 +60,11 @@ def deploy_pipeline(kfp_package_path, version, experiment_name, namespace, host,
     dt_now = datetime.now()
     year = dt_now.strftime("%Y")
     pipeline_name = (
-        PIPELINE_NAME + "_" + version + "_" + dt_now.strftime("{}%m%d%H%M".format(year[-2:]))
+        PIPELINE_NAME
+        + "_"
+        + version
+        + "_"
+        + dt_now.strftime("{}%m%d%H%M".format(year[-2:]))
     )
 
     client = kfp.Client(namespace=namespace, host=host)
@@ -72,7 +76,6 @@ def deploy_pipeline(kfp_package_path, version, experiment_name, namespace, host,
         pipelineid=pipeline_id,
         async_req=True,
     )
-
 
     if run:
         run_id = "run-" + datetime.now().strftime("%Y%m%d-%H%M%S")
