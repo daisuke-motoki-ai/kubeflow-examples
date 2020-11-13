@@ -61,12 +61,19 @@ def deploy_pipeline(
 
  client = kfp.Client(namespace=namespace, host=host)
 #  pipeline_file = os.path.join(pipeline_file_path)
+# バージョンを上げるときはこれを利用。
+ pipelineid = "354e4038-f642-4493-9118-f9bbf7b4f09e"
+ client.pipeline_uploads.upload_pipeline_version(
+   uploadfile = kfp_package_path, 
+   name = pipeline_name, 
+   pipelineid = pipelineid, 
+   async_req=True
+   )
 
-
- pipeline = client.upload_pipeline(
-   pipeline_package_path=kfp_package_path,
-   pipeline_name=pipeline_name)
- pipeline_id = pipeline.id
+#  pipeline = client.upload_pipeline(
+#    pipeline_package_path=kfp_package_path,
+#    pipeline_name=pipeline_name)
+#  pipeline_id = pipeline.id
 #  client.upload_pipeline_version(
 #    pipeline_package_path=kfp_package_path)
 
