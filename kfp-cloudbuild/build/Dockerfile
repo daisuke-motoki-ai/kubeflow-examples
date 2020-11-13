@@ -50,11 +50,10 @@ RUN set -ex \
 # as of Stretch, "gpg" is no longer included by default
 		$(command -v gpg > /dev/null || echo 'gnupg dirmngr')
 
-RUN wget
+# && wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc"
 # RUN wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-${PYTHON_VERSION}.tar.xz"
 RUN wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-$PYTHON_VERSION.tar.xz" \
 	&& wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION}/Python-$PYTHON_VERSION.tar.xz.asc"
-	# && wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc"
 RUN export GNUPGHOME="$(mktemp -d)" \
 	&& gpg --batch --keyserver ha.pool.sks-keyservers.net --recv-keys "$GPG_KEY" \
 	&& gpg --batch --verify python.tar.xz.asc python.tar.xz
@@ -77,7 +76,7 @@ RUN { command -v gpgconf > /dev/null && gpgconf --kill all || :; } \
 	&& make install \
 	&& ldconfig \
 	\
-apt-mark auto '.*' > /dev/null \
+	&& apt-mark auto '.*' > /dev/null \
 	&& apt-mark manual $savedAptMark \
 	&& find /usr/local -type f -executable -not \( -name '*tkinter*' \) -exec ldd '{}' ';' \
 		| awk '/=>/ { print $(NF-1) }' \
