@@ -1,0 +1,17 @@
+steps:
+
+
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: [
+      'builds', 
+      'submit',
+      '--config=kfp-cloudbuild/build/cloudbuild.yaml',
+      '--substitutions= 
+        _PROJECT_ID="devel-jbc-ai",
+        _COMPUTE_ZONE="asia-east1-a",
+        _CLUSTER_NAME="cluster-1",
+        _EXPERIMENT_NAME="calqubo_mock",
+        _TAG="1.0.0"
+        ',
+      '.'
+  ]
