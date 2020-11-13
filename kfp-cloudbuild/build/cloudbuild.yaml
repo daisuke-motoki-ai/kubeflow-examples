@@ -1,4 +1,5 @@
 steps:
+
 # Clone repo to Cloud Build environment
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone',
