@@ -14,7 +14,7 @@ steps:
   id: Build & Push GCR
   args:
   - --destination=gcr.io/${_PROJECT_ID}/kfp-util:latest
-  - --dockerfile=./Dockerfile
+  - --dockerfile=./kfp-cloudbuild/build/Dockerfile
   - --cache=true
   - --cache-ttl=6h
 
