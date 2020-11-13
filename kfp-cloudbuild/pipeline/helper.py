@@ -60,11 +60,15 @@ def deploy_pipeline(
  pipeline_name = PIPELINE_NAME+"_version_at_"+version
 
  client = kfp.Client(namespace=namespace, host=host)
+ pipeline_file = os.path.join(pipeline_file_path)
+
 
  pipeline = client.upload_pipeline(
    pipeline_package_path=kfp_package_path,
    pipeline_name=pipeline_name)
  pipeline_id = pipeline.id
+ client.upload_pipeline_version(
+   pipeline_package_path=kfp_package_path)
 
  if run:
    run_id = 'run-' + datetime.now().strftime('%Y%m%d-%H%M%S')
