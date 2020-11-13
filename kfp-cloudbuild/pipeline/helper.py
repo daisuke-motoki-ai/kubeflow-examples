@@ -57,14 +57,13 @@ def read_settings():
 def deploy_pipeline(kfp_package_path, version, experiment_name, namespace, host, run):
     """Deploy and run the givne kfp_package_path."""
 
-    #  pipeline_name = PIPELINE_NAME+"-"+version
     dt_now = datetime.now()
+    year = dt_now.strftime("%Y")
     pipeline_name = (
-        PIPELINE_NAME + "_version_at_" + version + dt_now.strftime("%Y%m%d%H%M")
+        PIPELINE_NAME + "_" + version + "_" + dt_now.strftime("{}%m%d%H%M".format(year[-2:]))
     )
 
     client = kfp.Client(namespace=namespace, host=host)
-    #  pipeline_file = os.path.join(pipeline_file_path)
     # バージョンを上げるときはこれを利用。
     pipeline_id = "354e4038-f642-4493-9118-f9bbf7b4f09e"
     client.pipeline_uploads.upload_pipeline_version(
@@ -74,12 +73,6 @@ def deploy_pipeline(kfp_package_path, version, experiment_name, namespace, host,
         async_req=True,
     )
 
-    #  pipeline = client.upload_pipeline(
-    #    pipeline_package_path=kfp_package_path,
-    #    pipeline_name=pipeline_name)
-    #  pipeline_id = pipeline.id
-    #  client.upload_pipeline_version(
-    #    pipeline_package_path=kfp_package_path)
 
     if run:
         run_id = "run-" + datetime.now().strftime("%Y%m%d-%H%M%S")
