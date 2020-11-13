@@ -9,7 +9,7 @@ steps:
       '--substitutions= 
         _PROJECT_ID="devel-jbc-ai",
         _COMPUTE_ZONE="asia-east1-a",
-        _CLUSTER_NAME="cluster-1",
+        _CLUSTER_NAME="cluster\-1",
         _EXPERIMENT_NAME="calqubo_mock",
         _TAG="1.0.0"
         ',
