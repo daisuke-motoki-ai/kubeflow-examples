@@ -54,7 +54,7 @@ def read_settings():
 
 
 def deploy_pipeline(kfp_package_path, version, experiment_name, namespace, host, run):
-    """Deploy and run the givne kfp_package_path."""
+    """Deploy and run the given kfp_package_path."""
 
     dt_now = datetime.now()
     year = dt_now.strftime("%Y")
