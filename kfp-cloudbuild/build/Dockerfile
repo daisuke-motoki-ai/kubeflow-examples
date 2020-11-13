@@ -61,9 +61,8 @@ RUN { command -v gpgconf > /dev/null && gpgconf --kill all || :; } \
 	&& rm -rf "$GNUPGHOME" python.tar.xz.asc \
 	&& mkdir -p /usr/src/python \
 	&& tar -xJC /usr/src/python --strip-components=1 -f python.tar.xz \
-	&& rm python.tar.xz \
-	\
-	&& cd /usr/src/python \
+	&& rm python.tar.xz
+RUN cd /usr/src/python \
 	&& gnuArch="$(dpkg-architecture --query DEB_BUILD_GNU_TYPE)" \
 	&& ./configure \
 		--build="$gnuArch" \
@@ -74,9 +73,9 @@ RUN { command -v gpgconf > /dev/null && gpgconf --kill all || :; } \
 		--without-ensurepip \
 	&& make -j "$(nproc)" \
 	&& make install \
-	&& ldconfig \
-	\
-	&& apt-mark auto '.*' > /dev/null \
+	&& ldconfig
+
+RUN apt-mark auto '.*' > /dev/null \
 	&& apt-mark manual $savedAptMark \
 	&& find /usr/local -type f -executable -not \( -name '*tkinter*' \) -exec ldd '{}' ';' \
 		| awk '/=>/ { print $(NF-1) }' \
@@ -86,9 +85,8 @@ RUN { command -v gpgconf > /dev/null && gpgconf --kill all || :; } \
 		| sort -u \
 		| xargs -r apt-mark manual \
 	&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
-	&& rm -rf /var/lib/apt/lists/* \
-	\
-	&& find /usr/local -depth \
+	&& rm -rf /var/lib/apt/lists/*
+RUN find /usr/local -depth \
 		\( \
 			\( -type d -a \( -name test -o -name tests \) \) \
 			-o \
