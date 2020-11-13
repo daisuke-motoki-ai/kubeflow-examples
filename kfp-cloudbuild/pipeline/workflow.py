@@ -17,35 +17,30 @@ import kfp
 import kfp.dsl as dsl
 
 # Initialize component store
-component_store = kfp.components.ComponentStore(
-  local_search_paths=['components'])
+component_store = kfp.components.ComponentStore(local_search_paths=["components"])
 
 # Create component factories
-add_op = component_store.load_component('my_add')
-divide_op = component_store.load_component('my_divide')
+add_op = component_store.load_component("my_add")
+divide_op = component_store.load_component("my_divide")
 
 # Define pipeline
 @dsl.pipeline(
-  name='A Simple CI pipeline',
-  description='Basic sample to show how to do CI with KFP using CloudBuild'
+    name="A Simple CI pipeline",
+    description="Basic sample to show how to do CI with KFP using CloudBuild",
 )
 def pipeline(
-  x_value: int=1,
-  y_value: int=1,
-  z_value: int=1,
+    x_value: int = 1, y_value: int = 1, z_value: int = 1,
 ):
 
-  add_step = add_op(x_value=x_value, y_value=y_value)
-  add_step.set_display_name('Add x and y')
-  add_result = add_step.outputs
-  sum_value = add_result['sum']
-  with kfp.dsl.Condition(sum_value != 0):
-    divide_step = divide_op(x_value=sum_value, y_value=z_value)
-    divide_step.set_display_name('Divide sum by z')
-    add_step2 = add_op(
-      x_value=divide_step.outputs['quotient'],
-      y_value=divide_step.outputs['remainder'])
-    add_step2.set_display_name('Add quotient and remainder')
-
-
-
+    add_step = add_op(x_value=x_value, y_value=y_value)
+    add_step.set_display_name("Add x and y")
+    add_result = add_step.outputs
+    sum_value = add_result["sum"]
+    with kfp.dsl.Condition(sum_value != 0):
+        divide_step = divide_op(x_value=sum_value, y_value=z_value)
+        divide_step.set_display_name("Divide sum by z")
+        add_step2 = add_op(
+            x_value=divide_step.outputs["quotient"],
+            y_value=divide_step.outputs["remainder"],
+        )
+        add_step2.set_display_name("Add quotient and remainder")

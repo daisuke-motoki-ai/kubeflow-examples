@@ -19,36 +19,38 @@ from typing import NamedTuple
 from collections import namedtuple
 
 
-def divide(x: int, y: int) -> NamedTuple('MyDivmodOutput', [('quotient', float), ('remainder', float)]):
-  """Returns the quotient and the remainder  of dividing x on y."""
-  quotient = int(x / y)
-  remainder = int(x) % int(y)
+def divide(
+    x: int, y: int
+) -> NamedTuple("MyDivmodOutput", [("quotient", float), ("remainder", float)]):
+    """Returns the quotient and the remainder  of dividing x on y."""
+    quotient = int(x / y)
+    remainder = int(x) % int(y)
 
-  myDivmodOutput = namedtuple('MyDivmodOutput', ['quotient', 'remainder'])
-  result = myDivmodOutput(quotient=quotient, remainder=remainder)
+    myDivmodOutput = namedtuple("MyDivmodOutput", ["quotient", "remainder"])
+    result = myDivmodOutput(quotient=quotient, remainder=remainder)
 
-  return result
+    return result
 
 
 def main(args):
-  x = int(args.x_value)
-  y = int(args.y_value)
-  result = divide(x, y)
-  print("Result: {}".format(result))
+    x = int(args.x_value)
+    y = int(args.y_value)
+    result = divide(x, y)
+    print("Result: {}".format(result))
 
-  # Write output to file
-  Path(args.quotient_path).parent.mkdir(parents=True, exist_ok=True)
-  Path(args.quotient_path).write_text(str(result.quotient))
+    # Write output to file
+    Path(args.quotient_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.quotient_path).write_text(str(result.quotient))
 
-  Path(args.remainder_path).parent.mkdir(parents=True, exist_ok=True)
-  Path(args.remainder_path).write_text(str(result.remainder))
+    Path(args.remainder_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.remainder_path).write_text(str(result.remainder))
 
 
 if __name__ == "__main__":
-  parser = argparse.ArgumentParser()
-  parser.add_argument("--x-value", type=int)
-  parser.add_argument("--y-value", type=int)
-  parser.add_argument("--quotient-path", type=str)
-  parser.add_argument("--remainder-path", type=str)
-  args = parser.parse_args()
-  main(args)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--x-value", type=int)
+    parser.add_argument("--y-value", type=int)
+    parser.add_argument("--quotient-path", type=str)
+    parser.add_argument("--remainder-path", type=str)
+    args = parser.parse_args()
+    main(args)

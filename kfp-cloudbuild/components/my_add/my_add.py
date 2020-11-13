@@ -18,27 +18,26 @@ from pathlib import Path
 
 
 def add(x: int, y: int) -> int:
-  """Returns the sum of x and y."""
-  result = x +  y
-  return result
+    """Returns the sum of x and y."""
+    result = x + y
+    return result
 
 
 def main(args):
-  x = int(args.x_value)
-  y = int(args.y_value)
-  result = add(x, y)
-  print("Result: {}".format(result))
+    x = int(args.x_value)
+    y = int(args.y_value)
+    result = add(x, y)
+    print("Result: {}".format(result))
 
-  # Write output to file
-  Path(args.result_path).parent.mkdir(parents=True, exist_ok=True)
-  Path(args.result_path).write_text(str(result))
-
+    # Write output to file
+    Path(args.result_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(args.result_path).write_text(str(result))
 
 
 if __name__ == "__main__":
-  parser = argparse.ArgumentParser()
-  parser.add_argument("--x-value", type=int)
-  parser.add_argument("--y-value", type=int)
-  parser.add_argument("--result-path", type=str)
-  args = parser.parse_args()
-  main(args)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--x-value", type=int)
+    parser.add_argument("--y-value", type=int)
+    parser.add_argument("--result-path", type=str)
+    args = parser.parse_args()
+    main(args)

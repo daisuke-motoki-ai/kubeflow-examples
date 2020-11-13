@@ -18,12 +18,11 @@ import my_divide
 
 
 class TestMyDivide(unittest.TestCase):
-
     def test_divide(self):
         result = my_divide.divide(10, 3)
         self.assertEqual(result.quotient, 3)
         self.assertEqual(result.remainder, 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
