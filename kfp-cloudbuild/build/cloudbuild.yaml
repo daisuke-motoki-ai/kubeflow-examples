@@ -1,14 +1,14 @@
 steps:
 
-# 手動ビルドをする際は以下リポジトリのクローンを利用してください。
-# Clone repo to Cloud Build environment
-# - name: 'gcr.io/cloud-builders/git'
-#   args: ['clone',
-#          '${_REPO_URL}', '.',
-#          '-b', '${_BRANCH}',
-#          '--depth', '1',
-#          '--verbose']
-#   id: 'Clone Repo'
+手動ビルドをする際は以下リポジトリのクローンを利用してください。
+Clone repo to Cloud Build environment
+- name: 'gcr.io/cloud-builders/git'
+  args: ['clone',
+         '${_REPO_URL}', '.',
+         '-b', '${_BRANCH}',
+         '--depth', '1',
+         '--verbose']
+  id: 'Clone Repo'
 
 # Run unit tests
 - name: 'python:3.6-slim-jessie'
