@@ -12,16 +12,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-_PROJECT_ID='devel-jbc-ai'
+# _PROJECT_ID='devel-jbc-ai'
 # Create the kfp-util docker container image
-docker build -t gcr.io/${_PROJECT_ID}/kfp-util:latest .
-docker push gcr.io/${_PROJECT_ID}/kfp-util:latest
+# docker build -t gcr.io/${_PROJECT_ID}/kfp-util:latest .
+# docker push gcr.io/${_PROJECT_ID}/kfp-util:latest
 
 # Set substitutions
 SUBSTITUTIONS=\
 _REPO_URL='https://github.com/daisuke-motoki-ai/kubeflow-examples.git',\
 _BRANCH='for_jbc_ai',\
-_PROJECT_ID=${_PROJECT_ID},\
+_PROJECT_ID='devel-jbc-ai',\
 _COMPUTE_ZONE='asia-east1-a',\
 _CLUSTER_NAME='cluster-1',\
 _EXPERIMENT_NAME='calqubo_mock',\
