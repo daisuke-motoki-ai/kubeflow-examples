@@ -27,8 +27,8 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 ENV PYTHON_VERSION 3.6.8
 
-RUN set -ex
-# 	&& savedAptMark="$(apt-mark showmanual)" \
+RUN set -ex \
+	&& savedAptMark="$(apt-mark showmanual)" \
 # 	&& apt-get update && apt-get install -y --no-install-recommends \
 # 		dpkg-dev \
 # 		gcc \
