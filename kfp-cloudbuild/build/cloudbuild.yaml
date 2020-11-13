@@ -1,5 +1,4 @@
 steps:
-
 # Run unit tests
 - name: 'python:3.6-slim-jessie'
   entrypoint: 'bash'
