@@ -1,7 +1,7 @@
 steps:
 
-手動ビルドをする際は以下リポジトリのクローンを利用してください。
-Clone repo to Cloud Build environment
+# 手動ビルドをする際は以下リポジトリのクローンを利用してください。
+# Clone repo to Cloud Build environment
 - name: 'gcr.io/cloud-builders/git'
   args: ['clone',
          '${_REPO_URL}', '.',
