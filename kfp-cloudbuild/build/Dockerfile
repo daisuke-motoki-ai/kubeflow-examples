@@ -27,28 +27,28 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV GPG_KEY 0D96DF4D4110E5C43FBFB17F2D347EA6AA65421D
 ENV PYTHON_VERSION 3.6.8
 
-RUN set -ex \
-	&& savedAptMark="$(apt-mark showmanual)" \
-	&& apt-get update && apt-get install -y --no-install-recommends \
-		dpkg-dev \
-		gcc \
-		libbz2-dev \
-		libc6-dev \
-		libexpat1-dev \
-		libffi-dev \
-		libgdbm-dev \
-		liblzma-dev \
-		libncursesw5-dev \
-		libreadline-dev \
-		libsqlite3-dev \
-		libssl-dev \
-		make \
-		tk-dev \
-		wget \
-		xz-utils \
-		zlib1g-dev \
-# as of Stretch, "gpg" is no longer included by default
-		$(command -v gpg > /dev/null || echo 'gnupg dirmngr')
+RUN set -ex
+# 	&& savedAptMark="$(apt-mark showmanual)" \
+# 	&& apt-get update && apt-get install -y --no-install-recommends \
+# 		dpkg-dev \
+# 		gcc \
+# 		libbz2-dev \
+# 		libc6-dev \
+# 		libexpat1-dev \
+# 		libffi-dev \
+# 		libgdbm-dev \
+# 		liblzma-dev \
+# 		libncursesw5-dev \
+# 		libreadline-dev \
+# 		libsqlite3-dev \
+# 		libssl-dev \
+# 		make \
+# 		tk-dev \
+# 		wget \
+# 		xz-utils \
+# 		zlib1g-dev \
+# # as of Stretch, "gpg" is no longer included by default
+# 		$(command -v gpg > /dev/null || echo 'gnupg dirmngr')
 # RUN wget -O python.tar.xz "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz" \
 # 	&& wget -O python.tar.xz.asc "https://www.python.org/ftp/python/${PYTHON_VERSION%%[a-z]*}/Python-$PYTHON_VERSION.tar.xz.asc" \
 # 	&& export GNUPGHOME="$(mktemp -d)" \
