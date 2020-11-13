@@ -98,50 +98,50 @@ RUN { command -v gpgconf > /dev/null && gpgconf --kill all || :; } \
 	\
 	&& python3 --version
 
-# # # make some useful symlinks that are expected to exist
-# # RUN cd /usr/local/bin \
-# # 	&& ln -s idle3 idle \
-# # 	&& ln -s pydoc3 pydoc \
-# # 	&& ln -s python3 python \
-# # 	&& ln -s python3-config python-config
+# make some useful symlinks that are expected to exist
+RUN cd /usr/local/bin \
+	&& ln -s idle3 idle \
+	&& ln -s pydoc3 pydoc \
+	&& ln -s python3 python \
+	&& ln -s python3-config python-config
 
-# # # if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
-# # ENV PYTHON_PIP_VERSION 19.1.1
+# if this is called "PIP_VERSION", pip explodes with "ValueError: invalid truth value '<VERSION>'"
+ENV PYTHON_PIP_VERSION 19.1.1
 
-# # RUN set -ex; \
-# # 	\
-# # 	savedAptMark="$(apt-mark showmanual)"; \
-# # 	apt-get update; \
-# # 	apt-get install -y --no-install-recommends wget; \
-# # 	\
-# # 	wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py'; \
-# # 	\
-# # 	apt-mark auto '.*' > /dev/null; \
-# # 	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
-# # 	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
-# # 	rm -rf /var/lib/apt/lists/*; \
-# # 	\
-# # 	python get-pip.py \
-# # 		--disable-pip-version-check \
-# # 		--no-cache-dir \
-# # 		"pip==$PYTHON_PIP_VERSION" \
-# # 	; \
-# # 	pip --version; \
-# # 	\
-# # 	find /usr/local -depth \
-# # 		\( \
-# # 			\( -type d -a \( -name test -o -name tests \) \) \
-# # 			-o \
-# # 			\( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
-# # 		\) -exec rm -rf '{}' +; \
-# # 	rm -f get-pip.py
+RUN set -ex; \
+	\
+	savedAptMark="$(apt-mark showmanual)"; \
+	apt-get update; \
+	apt-get install -y --no-install-recommends wget; \
+	\
+	wget -O get-pip.py 'https://bootstrap.pypa.io/get-pip.py'; \
+	\
+	apt-mark auto '.*' > /dev/null; \
+	[ -z "$savedAptMark" ] || apt-mark manual $savedAptMark; \
+	apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+	rm -rf /var/lib/apt/lists/*; \
+	\
+	python get-pip.py \
+		--disable-pip-version-check \
+		--no-cache-dir \
+		"pip==$PYTHON_PIP_VERSION" \
+	; \
+	pip --version; \
+	\
+	find /usr/local -depth \
+		\( \
+			\( -type d -a \( -name test -o -name tests \) \) \
+			-o \
+			\( -type f -a \( -name '*.pyc' -o -name '*.pyo' \) \) \
+		\) -exec rm -rf '{}' +; \
+	rm -f get-pip.py
 
 
-# # ### Install the required Python packages ######################################
+### Install the required Python packages ######################################
 
-# # RUN pip3 install fire pyyaml pathlib
-# # RUN pip3 install --upgrade kfp
+RUN pip3 install fire pyyaml pathlib
+RUN pip3 install --upgrade kfp
 
-# # ###############################################################################
+###############################################################################
 
 
