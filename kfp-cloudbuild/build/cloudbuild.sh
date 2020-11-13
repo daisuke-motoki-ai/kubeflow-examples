@@ -13,9 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 _PROJECT_ID='devel-jbc-ai'
-# Create the kfp-util docker container image
-docker build -t gcr.io/${_PROJECT_ID}/kfp-util:latest .
-docker push gcr.io/${_PROJECT_ID}/kfp-util:latest
 
 # Set substitutions
 SUBSTITUTIONS=\
