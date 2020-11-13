@@ -25,7 +25,7 @@ _PROJECT_ID=${_PROJECT_ID},\
 _COMPUTE_ZONE='asia-east1-a',\
 _CLUSTER_NAME='cluster-1',\
 _EXPERIMENT_NAME='helloworld-dev',\
-_TAG='latest'
+_TAG='1.0.0'
 
 # Submit the build job
 gcloud builds submit --no-source --config cloudbuild.yaml \
