@@ -1,12 +1,5 @@
 steps:
 
-- name: gcr.io/kaniko-project/executor
-  id: Build & Push GCR
-  args:
-  - --destination=gcr.io/${_PROJECT_ID}/kfp-util:latest
-  - --dockerfile=./Dockerfile
-  - --cache=true
-  - --cache-ttl=6h
 
 # Clone repo to Cloud Build environment
 - name: 'gcr.io/cloud-builders/git'
@@ -16,6 +9,14 @@ steps:
          '--depth', '1',
          '--verbose']
   id: 'Clone Repo'
+
+- name: gcr.io/kaniko-project/executor
+  id: Build & Push GCR
+  args:
+  - --destination=gcr.io/${_PROJECT_ID}/kfp-util:latest
+  - --dockerfile=./kfp-cloudbuild/build/Dockerfile
+  - --cache=true
+  - --cache-ttl=6h
 
 # Run unit tests
 - name: 'python:3.6-slim-jessie'
