@@ -1,6 +1,6 @@
-#FROM python:3.6-slim-jessie
+FROM python:3.6-slim-jessie
 
-FROM gcr.io/cloud-builders/kubectl
+# FROM gcr.io/cloud-builders/kubectl
 
 RUN apt update && \
    apt-get install -y python3 python-dev python3-dev build-essential \
