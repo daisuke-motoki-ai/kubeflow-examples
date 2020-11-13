@@ -27,7 +27,7 @@ OUTPUT_PACKAGE_PATH = 'pipeline.tar.gz'
 NAMESPACE = 'default'
 HOST = '6b415e369a40e0ab-dot-asia-east1.pipelines.googleusercontent.com'
 EXPERIMENT_NAME = 'default-experiment'
-PIPELINE_NAME = 'helloworld-pipeline3'
+PIPELINE_NAME = 'CalQUBO_mock'
 
 
 def update_component_spec(repo_url, image_tag):
