@@ -27,7 +27,7 @@ OUTPUT_PACKAGE_PATH = 'pipeline.tar.gz'
 NAMESPACE = 'default'
 HOST = '6b415e369a40e0ab-dot-asia-east1.pipelines.googleusercontent.com'
 EXPERIMENT_NAME = 'default-experiment'
-PIPELINE_NAME = 'helloworld-pipeline2'
+PIPELINE_NAME = 'helloworld-pipeline'
 
 
 def update_component_spec(repo_url, image_tag):
@@ -56,7 +56,8 @@ def deploy_pipeline(
   kfp_package_path, version, experiment_name, namespace, host, run):
  """Deploy and run the givne kfp_package_path."""
 
- pipeline_name = PIPELINE_NAME+"-"+version
+#  pipeline_name = PIPELINE_NAME+"-"+version
+ pipeline_name = PIPELINE_NAME+"_version_at_"+version
 
  client = kfp.Client(namespace=namespace, host=host)
 
